@@ -1,12 +1,12 @@
 {
-  "Version": "72",
+  "Version": "73",
   "ReleaseNotes": "ATENÇÃO NOVA ATUALIZAÇÃO\r\n ",
   "UrlUpdate": "https://bitbin.it/xlha9hST/raw/",
   "fundoonline": "https://i.ibb.co/zhk2jv4/mar-o.jpg",
   "logoonline": "https://i.ibb.co/MMzX3m8/banner.png",
   "Sms": "https://paste.anasor.com/paste.php?raw&id=346677",
   "rodapeonline": "https://vembrabo.alphi.media/imgshare/uploads/Adobe_Express_20230701_1718550_1.png",
-  "CheckUser": "true",
+  "CheckUser": "",
   "UdpPort": "7300",
   "Udp": [
    {
@@ -31,7 +31,7 @@
       "TYPE": "premium",
       "FLAG": "ph.png",
       "ServerIP": "Privanox.kevintechtutorials.fun",
-      "CheckUser": "http://161.132.53.145:87/checkUser",
+      "CheckUser": "",
       "ServerPort": "22",
       "SSLPort": "443",
       "USER": "",
