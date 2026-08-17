@@ -3,88 +3,603 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Ad</title>
-    <!-- Telegram WebApp SDK -->
+
+    <title>KevinTech Sponsor</title>
+
+    <!-- Telegram WebApp -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    
+
     <!-- Monetag SDK -->
-    <script src='//libtl.com/sdk.js' data-zone='11217882' data-sdk='show_11217882'></script>
+    <script
+        src="//libtl.com/sdk.js"
+        data-zone="11217882"
+        data-sdk="show_11217882">
+    </script>
 
     <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --blue: #229ed9;
+            --blue-light: #42b9f5;
+            --green: #25d366;
+            --red: #ff4d67;
+            --card: rgba(255,255,255,.08);
+            --border: rgba(255,255,255,.12);
+        }
+
         body {
-            background-color: var(--tg-theme-bg-color, #18222d);
-            color: var(--tg-theme-text-color, #ffffff);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px;
+
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            padding: 20px;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            color: var(--tg-theme-text-color, #fff);
+
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(34,158,217,.25),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 90%,
+                    rgba(0,119,255,.18),
+                    transparent 35%
+                ),
+                var(--tg-theme-bg-color, #0d1621);
+
+            overflow-x: hidden;
         }
-        h2 { font-size: 20px; margin-bottom: 10px;}
-        p { font-size: 14px; opacity: 0.8; }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* LOGO */
+
+        .logo {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #229ed9,
+                    #147fc1
+                );
+
+            box-shadow:
+                0 15px 40px rgba(34,158,217,.35);
+
+            font-size: 36px;
+            font-weight: 900;
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-7px);
+            }
+        }
+
+        /* CARD */
+
+        .card {
+            position: relative;
+
+            padding: 28px 22px 24px;
+
+            border-radius: 28px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.35);
+
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+
+            padding: 7px 12px;
+
+            border-radius: 999px;
+
+            background: rgba(34,158,217,.14);
+
+            border: 1px solid rgba(34,158,217,.25);
+
+            color: #52c7ff;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: .6px;
+        }
+
+        h1 {
+            margin: 15px 0 8px;
+
+            font-size: 25px;
+            line-height: 1.2;
+
+            font-weight: 800;
+        }
+
+        .description {
+            margin: 0 auto;
+
+            max-width: 330px;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            opacity: .72;
+        }
+
+        /* INFO */
+
+        .info {
+            display: flex;
+            gap: 10px;
+
+            margin: 22px 0;
+        }
+
+        .info-box {
+            flex: 1;
+
+            padding: 12px 8px;
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,.05);
+
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .info-icon {
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            font-size: 11px;
+            opacity: .65;
+        }
+
+        /* BUTTON */
+
+        .play-btn {
+            width: 100%;
+
+            padding: 16px 18px;
+
+            border: 0;
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #229ed9,
+                    #1689c4
+                );
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(34,158,217,.3);
+
+            transition:
+                transform .15s,
+                box-shadow .15s,
+                opacity .15s;
+        }
+
+        .play-btn:active {
+            transform: scale(.97);
+        }
+
+        .play-btn:disabled {
+            cursor: wait;
+            opacity: .7;
+        }
+
+        /* LOADING */
+
+        .loader {
+            display: none;
+
+            width: 18px;
+            height: 18px;
+
+            margin-right: 8px;
+
+            vertical-align: middle;
+
+            border: 3px solid rgba(255,255,255,.35);
+            border-top-color: white;
+
+            border-radius: 50%;
+
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ERROR */
+
+        #error-msg {
+            display: none;
+        }
+
+        .error-icon {
+            width: 64px;
+            height: 64px;
+
+            margin: 0 auto 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background: rgba(255,77,103,.12);
+
+            color: var(--red);
+
+            font-size: 30px;
+        }
+
+        .continue-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 15px;
+
+            border: 0;
+            border-radius: 15px;
+
+            background: var(--green);
+
+            color: white;
+
+            font-weight: 800;
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            opacity: .55;
+        }
+
+        .footer a {
+            color: var(--blue-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer p {
+            margin: 7px 0;
+        }
+
+        .secure {
+            margin-top: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+            font-size: 10px;
+            opacity: .45;
+        }
     </style>
 </head>
+
 <body>
-    <div id="loading" style="display:flex; flex-direction:column; align-items:center;">
-        <h2>Patrocinador Monetag</h2>
-        <p>Para usar este servicio gratis, apóyanos viendo este corto anuncio.</p>
-        <button id="playBtn" style="padding: 15px 30px; background-color: #2ea6ff; color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            ▶️ Ver Anuncio para Continuar
-        </button>
+
+<div class="container">
+
+    <div class="card">
+
+        <!-- LOGO -->
+        <div class="logo">
+            KT
+        </div>
+
+        <!-- MAIN -->
+        <div id="loading">
+
+            <span class="badge">
+                ✦ KEVINTECH
+            </span>
+
+            <h1>
+                Apoya el proyecto
+            </h1>
+
+            <p class="description">
+                Mira un pequeño anuncio para continuar utilizando
+                nuestro servicio gratuitamente.
+            </p>
+
+            <!-- INFO -->
+            <div class="info">
+
+                <div class="info-box">
+                    <div class="info-icon">🎬</div>
+                    <div class="info-text">
+                        Anuncio corto
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon">⚡</div>
+                    <div class="info-text">
+                        Acceso rápido
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon">🔒</div>
+                    <div class="info-text">
+                        Proceso seguro
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button
+                id="playBtn"
+                class="play-btn">
+
+                <span id="loader" class="loader"></span>
+
+                <span id="btnText">
+                    ▶️ Ver anuncio y continuar
+                </span>
+
+            </button>
+
+        </div>
+
+        <!-- ERROR -->
+        <div id="error-msg">
+
+            <div class="error-icon">
+                ⚠️
+            </div>
+
+            <h1>
+                Anuncio no disponible
+            </h1>
+
+            <p class="description">
+                No encontramos un anuncio disponible en este momento.
+                Puedes intentar continuar de todos modos.
+            </p>
+
+            <button
+                class="continue-btn"
+                onclick="sendSuccessAndClose()">
+
+                ✓ Continuar
+            </button>
+
+        </div>
+
     </div>
 
-    <div id="error-msg" style="display:none; color: #ff5252; margin-top: 20px;">
-        <h2>¡Ups!</h2>
-        <p>Hubo un problema al cargar el anuncio (o Monetag no tiene anuncios para tu país en este momento).</p>
-        <button onclick="sendSuccessAndClose()" style="padding: 12px 24px; background-color: #4caf50; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; font-weight: bold; margin-top: 15px;">
-            Continuar de todos modos
-        </button>
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <p>
+            📺
+            <a
+                href="https://youtube.com/@kevintechtutorials?si=a2gv6Oqhsne9Thgl"
+                target="_blank">
+                Kevin Tech Tutorials
+            </a>
+        </p>
+
+        <p>
+            💬
+            <a
+                href="https://whatsapp.com/channel/0029VaGmNBB4Y9lvO2Ppem2l"
+                target="_blank">
+                Canal de WhatsApp
+            </a>
+        </p>
+
+        <div class="secure">
+            🔐 Servicio protegido · KevinTech
+        </div>
+
     </div>
 
-    <div style="margin-top: 40px; font-size: 12px; opacity: 0.6;">
-        <p>Canal de Youtube: <a href="https://youtube.com/@kevintechtutorials?si=a2gv6Oqhsne9Thgl" style="color: #2ea6ff; text-decoration: none;">Kevin tech tutorials</a></p>
-        <p>canal de WhatsApp: <a href="https://whatsapp.com/channel/0029VaGmNBB4Y9lvO2Ppem2l" style="color: #2ea6ff; text-decoration: none;">crik para unirte a mi canal de WhatsApp</a></p>
-    </div>
+</div>
 
-    <script>
-        // Inicializar Telegram WebApp
-        window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
 
-        function sendSuccessAndClose() {
-            window.Telegram.WebApp.openTelegramLink("https://t.me/sshprivanoxbot?start=adcompleted");
-            window.Telegram.WebApp.close();
+<script>
+
+    /* ================================
+       TELEGRAM WEBAPP
+    ================================= */
+
+    const tg = window.Telegram.WebApp;
+
+    tg.ready();
+    tg.expand();
+
+
+    /* ================================
+       ELEMENTOS
+    ================================= */
+
+    const playBtn =
+        document.getElementById("playBtn");
+
+    const btnText =
+        document.getElementById("btnText");
+
+    const loader =
+        document.getElementById("loader");
+
+    const loading =
+        document.getElementById("loading");
+
+    const errorMsg =
+        document.getElementById("error-msg");
+
+
+    /* ================================
+       CONTINUAR
+    ================================= */
+
+    function sendSuccessAndClose() {
+
+        try {
+
+            tg.openTelegramLink(
+                "https://t.me/sshprivanoxbot?start=adcompleted"
+            );
+
+            setTimeout(() => {
+                tg.close();
+            }, 300);
+
+        } catch (error) {
+
+            window.location.href =
+                "https://t.me/sshprivanoxbot?start=adcompleted";
+        }
+    }
+
+
+    /* ================================
+       ERROR
+    ================================= */
+
+    function showError() {
+
+        loading.style.display = "none";
+
+        errorMsg.style.display = "block";
+    }
+
+
+    /* ================================
+       REPRODUCIR ANUNCIO
+    ================================= */
+
+    playBtn.addEventListener("click", async () => {
+
+        playBtn.disabled = true;
+
+        loader.style.display = "inline-block";
+
+        btnText.textContent =
+            "Cargando anuncio...";
+
+
+        if (typeof show_11217882 !== "function") {
+
+            showError();
+
+            return;
         }
 
-        function showError() {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("error-msg").style.display = "block";
+
+        try {
+
+            await show_11217882();
+
+            btnText.textContent =
+                "✓ Completado";
+
+            loader.style.display =
+                "none";
+
+            setTimeout(() => {
+
+                sendSuccessAndClose();
+
+            }, 500);
+
+
+        } catch (error) {
+
+            loader.style.display =
+                "none";
+
+            showError();
+
         }
 
-        document.getElementById("playBtn").addEventListener("click", () => {
-            const btn = document.getElementById("playBtn");
-            btn.innerText = "Cargando anuncio...";
-            btn.style.opacity = "0.7";
-            btn.disabled = true;
+    });
 
-            // Monetag Ad Function
-            if (typeof show_11217882 === "function") {
-                show_11217882().then(() => {
-                    // El usuario vio el video con éxito
-                    btn.innerText = "¡Completado!";
-                    sendSuccessAndClose();
-                }).catch(() => {
-                    // Hubo un error, el usuario saltó el video, o no hay anuncios
-                    showError();
-                });
-            } else {
-                showError();
-            }
-        });
-    </script>
+</script>
+
 </body>
 </html>
