@@ -2,283 +2,278 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KevinTech Premium</title>
+    <meta
+        name="viewport"
+        content="width=device-width,
+        initial-scale=1.0,
+        maximum-scale=1.0,
+        user-scalable=no"
+    >
 
-    <!-- Telegram -->
+    <title>Depwise • Sponsor</title>
+
+    <!-- Telegram WebApp -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <!-- Monetag -->
-    <script
-        src="//libtl.com/sdk.js"
-        data-zone="11712691"
-        data-sdk="show_11712691">
-    </script>
+    <!-- Adsgram -->
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
             -webkit-tap-highlight-color: transparent;
-        }
-
-        :root {
-            --cyan: #00e5ff;
-            --blue: #0077ff;
-            --purple: #8b5cf6;
-            --green: #00ff9d;
-            --red: #ff3158;
-            --bg: #03050a;
         }
 
         html,
         body {
-            width: 100%;
-            height: 100%;
+            margin: 0;
+            min-height: 100%;
         }
 
         body {
-            overflow: hidden;
-            background: var(--bg);
-            color: white;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 18px;
+
             font-family:
-                Inter,
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
                 sans-serif;
-        }
 
-        /* =========================================
-           BACKGROUND
-        ========================================= */
-
-        .background {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
+            color: #fff;
 
             background:
                 radial-gradient(
-                    circle at 50% 20%,
-                    rgba(0,229,255,.12),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 10% 90%,
-                    rgba(139,92,246,.13),
-                    transparent 30%
-                ),
-                #03050a;
-        }
-
-        .grid {
-            position: absolute;
-            inset: -50%;
-
-            background-image:
-                linear-gradient(
-                    rgba(0,229,255,.035) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(0,229,255,.035) 1px,
-                    transparent 1px
+                    circle at 50% -20%,
+                    #275b86 0%,
+                    #152c40 38%,
+                    #0a131c 72%,
+                    #060a0e 100%
                 );
 
-            background-size: 45px 45px;
-
-            transform:
-                perspective(500px)
-                rotateX(60deg)
-                translateY(150px);
-
-            animation: gridMove 12s linear infinite;
+            overflow: hidden;
         }
 
-        @keyframes gridMove {
-            from {
-                transform:
-                    perspective(500px)
-                    rotateX(60deg)
-                    translateY(0);
-            }
 
-            to {
-                transform:
-                    perspective(500px)
-                    rotateX(60deg)
-                    translateY(90px);
-            }
-        }
+        /* ==========================================
+           FONDO
+        ========================================== */
 
-        /* =========================================
-           PARTICLES
-        ========================================= */
+        .orb {
 
-        .particles span {
-            position: absolute;
+            position: fixed;
 
-            width: 3px;
-            height: 3px;
-
-            background: var(--cyan);
+            width: 220px;
+            height: 220px;
 
             border-radius: 50%;
 
-            box-shadow:
-                0 0 10px var(--cyan);
+            filter: blur(70px);
 
-            animation: particle 5s linear infinite;
+            pointer-events: none;
+
+            opacity: .42;
         }
 
-        .particles span:nth-child(1) {
-            left: 10%;
-            top: 20%;
-            animation-delay: 0s;
+        .orb.one {
+
+            top: -120px;
+            left: -100px;
+
+            background: rgba(46,166,255,.35);
+
+            animation:
+                moveOne 7s ease-in-out infinite;
         }
 
-        .particles span:nth-child(2) {
-            left: 25%;
-            top: 70%;
-            animation-delay: 1s;
+        .orb.two {
+
+            right: -120px;
+            bottom: -120px;
+
+            background: rgba(105,85,230,.30);
+
+            animation:
+                moveTwo 8s ease-in-out infinite;
         }
 
-        .particles span:nth-child(3) {
-            left: 70%;
-            top: 15%;
-            animation-delay: 2s;
-        }
+        @keyframes moveOne {
 
-        .particles span:nth-child(4) {
-            left: 85%;
-            top: 65%;
-            animation-delay: 3s;
-        }
-
-        .particles span:nth-child(5) {
-            left: 50%;
-            top: 85%;
-            animation-delay: 4s;
-        }
-
-        .particles span:nth-child(6) {
-            left: 92%;
-            top: 35%;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes particle {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
+            0%,100% {
+                transform: translate(0,0);
             }
 
-            30% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-100px);
+            50% {
+                transform: translate(25px,22px);
             }
         }
 
-        /* =========================================
-           MAIN
-        ========================================= */
+        @keyframes moveTwo {
+
+            0%,100% {
+                transform: translate(0,0);
+            }
+
+            50% {
+                transform: translate(-25px,-20px);
+            }
+        }
+
+
+        /* ==========================================
+           APP
+        ========================================== */
 
         .app {
-            position: relative;
-            z-index: 5;
 
             width: 100%;
-            height: 100%;
+            max-width: 400px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-        }
-
-        .panel {
-            width: 100%;
-            max-width: 390px;
-
-            text-align: center;
-        }
-
-        /* =========================================
-           LOGO
-        ========================================= */
-
-        .logo-area {
             position: relative;
-
-            width: 150px;
-            height: 150px;
-
-            margin: 0 auto 25px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 2;
         }
 
-        .ring {
-            position: absolute;
 
-            border: 1px solid rgba(0,229,255,.45);
+        /* ==========================================
+           CARD
+        ========================================== */
 
-            border-radius: 50%;
+        .card {
 
-            animation: rotate 8s linear infinite;
+            width: 100%;
+
+            padding: 24px 21px 20px;
+
+            border-radius: 27px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.11),
+                    rgba(255,255,255,.045)
+                );
+
+            border:
+                1px solid rgba(255,255,255,.12);
+
+            box-shadow:
+                0 30px 85px rgba(0,0,0,.48),
+                inset 0 1px 0 rgba(255,255,255,.07);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+
+            animation:
+                cardIn .5s ease;
         }
 
-        .ring.one {
-            width: 150px;
-            height: 150px;
-        }
+        @keyframes cardIn {
 
-        .ring.two {
-            width: 125px;
-            height: 125px;
-
-            border-color: rgba(139,92,246,.5);
-
-            animation-direction: reverse;
-            animation-duration: 6s;
-        }
-
-        .ring.three {
-            width: 105px;
-            height: 105px;
-
-            border-color: rgba(0,229,255,.25);
-
-            animation-duration: 4s;
-        }
-
-        @keyframes rotate {
             from {
-                transform: rotate(0deg);
+                opacity: 0;
+                transform:
+                    translateY(18px)
+                    scale(.97);
             }
 
             to {
-                transform: rotate(360deg);
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
             }
         }
 
-        .logo {
-            position: relative;
+
+        /* ==========================================
+           CABECERA
+        ========================================== */
+
+        .header {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+            color:
+                rgba(255,255,255,.70);
+        }
+
+        .online {
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #36d979;
+
+            box-shadow:
+                0 0 12px rgba(54,217,121,.7);
+        }
+
+        .sponsor {
+
+            padding: 6px 10px;
+
+            border-radius: 30px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: .3px;
+
+            color:
+                rgba(255,255,255,.48);
+
+            background:
+                rgba(255,255,255,.05);
+
+            border:
+                1px solid rgba(255,255,255,.07);
+        }
+
+
+        /* ==========================================
+           ICONO
+        ========================================== */
+
+        .hero {
 
             width: 82px;
             height: 82px;
+
+            margin: 0 auto 17px;
 
             display: flex;
             align-items: center;
@@ -289,489 +284,658 @@
             background:
                 linear-gradient(
                     135deg,
-                    #00e5ff,
-                    #0077ff 55%,
-                    #8b5cf6
+                    #2ea6ff,
+                    #6758e7
                 );
 
+            font-size: 37px;
+
             box-shadow:
-                0 0 25px rgba(0,229,255,.45),
-                0 0 70px rgba(0,119,255,.2);
+                0 15px 38px rgba(46,166,255,.28);
 
-            font-size: 25px;
-            font-weight: 950;
-            letter-spacing: -2px;
-
-            animation: logoPulse 2.5s ease-in-out infinite;
+            animation:
+                floating 3.5s ease-in-out infinite;
         }
 
-        @keyframes logoPulse {
+        @keyframes floating {
+
             0%,100% {
-                box-shadow:
-                    0 0 25px rgba(0,229,255,.45),
-                    0 0 70px rgba(0,119,255,.2);
+                transform: translateY(0);
             }
 
             50% {
-                box-shadow:
-                    0 0 45px rgba(0,229,255,.7),
-                    0 0 100px rgba(0,119,255,.35);
+                transform: translateY(-5px);
             }
         }
 
-        /* =========================================
-           TITLES
-        ========================================= */
 
-        .mini-title {
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 4px;
-
-            color: var(--cyan);
-
-            text-transform: uppercase;
-
-            margin-bottom: 10px;
-        }
+        /* ==========================================
+           TEXTO
+        ========================================== */
 
         h1 {
-            font-size: 32px;
-            line-height: 1;
 
-            font-weight: 900;
+            margin: 0;
 
-            letter-spacing: -1px;
+            text-align: center;
 
-            margin-bottom: 13px;
-        }
+            font-size: 24px;
 
-        h1 span {
-            background:
-                linear-gradient(
-                    90deg,
-                    #fff,
-                    var(--cyan),
-                    #fff
-                );
+            line-height: 1.2;
 
-            background-size: 200%;
+            font-weight: 850;
 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            animation: shine 3s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200%;
-            }
+            letter-spacing: -.6px;
         }
 
         .description {
-            max-width: 310px;
 
-            margin: 0 auto;
+            max-width: 320px;
 
-            color: rgba(255,255,255,.55);
+            margin: 9px auto 0;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.62);
 
             font-size: 13px;
 
-            line-height: 1.6;
+            line-height: 1.55;
         }
 
-        /* =========================================
-           STATUS
-        ========================================= */
 
-        .status {
-            display: inline-flex;
+        /* ==========================================
+           PROGRESO
+        ========================================== */
+
+        .progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
 
             align-items: center;
-            gap: 7px;
 
-            margin-top: 18px;
-            margin-bottom: 18px;
+            margin-top: 20px;
+            margin-bottom: 8px;
 
-            padding: 7px 12px;
+            font-size: 11px;
+
+            color:
+                rgba(255,255,255,.43);
+        }
+
+        .progress-header strong {
+
+            color: #fff;
+
+            font-size: 12px;
+        }
+
+        .progress {
+
+            display: flex;
+
+            gap: 6px;
+
+            height: 7px;
+
+            margin-bottom: 16px;
+        }
+
+        .segment {
+
+            flex: 1;
+
+            position: relative;
+
+            overflow: hidden;
 
             border-radius: 50px;
 
-            background: rgba(0,255,157,.06);
-
-            border: 1px solid rgba(0,255,157,.15);
-
-            color: rgba(255,255,255,.65);
-
-            font-size: 10px;
+            background:
+                rgba(255,255,255,.09);
         }
 
-        .status-dot {
-            width: 6px;
-            height: 6px;
+        .segment::after {
 
-            border-radius: 50%;
+            content: "";
 
-            background: var(--green);
-
-            box-shadow:
-                0 0 10px var(--green);
-
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: .3;
-            }
-        }
-
-        /* =========================================
-           BUTTON
-        ========================================= */
-
-        .button-wrap {
-            position: relative;
-
-            margin-top: 5px;
-        }
-
-        .glow {
             position: absolute;
 
-            inset: -3px;
+            inset: 0;
 
-            border-radius: 18px;
+            transform:
+                translateX(-105%);
 
             background:
                 linear-gradient(
                     90deg,
-                    var(--cyan),
-                    var(--blue),
-                    var(--purple),
-                    var(--cyan)
+                    #178bdc,
+                    #63c5ff
                 );
-
-            background-size: 300%;
-
-            filter: blur(12px);
-
-            opacity: .35;
-
-            animation: buttonGlow 4s linear infinite;
-        }
-
-        @keyframes buttonGlow {
-            to {
-                background-position: 300%;
-            }
-        }
-
-        #playBtn {
-            position: relative;
-
-            width: 100%;
-
-            padding: 17px 20px;
-
-            border: 1px solid rgba(255,255,255,.18);
-
-            border-radius: 17px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,229,255,.18),
-                    rgba(0,119,255,.18)
-                );
-
-            color: white;
-
-            font-size: 14px;
-            font-weight: 850;
-
-            cursor: pointer;
-
-            backdrop-filter: blur(10px);
 
             transition:
-                transform .2s,
-                background .2s;
+                transform .4s ease;
         }
 
-        #playBtn:active {
-            transform: scale(.96);
+        .segment.active::after,
+        .segment.done::after {
+
+            transform:
+                translateX(0);
         }
 
-        #playBtn:hover {
+
+        /* ==========================================
+           ESTADO
+        ========================================== */
+
+        .status {
+
+            min-height: 45px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 8px 12px;
+
+            margin-bottom: 12px;
+
+            border-radius: 14px;
+
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,229,255,.28),
-                    rgba(0,119,255,.28)
-                );
+                rgba(0,0,0,.13);
+
+            border:
+                1px solid rgba(255,255,255,.055);
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-align: center;
         }
 
-        #playBtn:disabled {
-            opacity: .65;
-            cursor: wait;
-        }
 
-        /* =========================================
-           LOADER
-        ========================================= */
+        /* ==========================================
+           SPINNER
+        ========================================== */
 
-        .loader {
-            display: none;
+        .spinner {
 
-            width: 17px;
-            height: 17px;
+            width: 18px;
+            height: 18px;
 
-            margin-right: 8px;
+            margin-right: 9px;
 
-            vertical-align: middle;
+            border:
+                3px solid rgba(255,255,255,.14);
 
-            border: 2px solid rgba(255,255,255,.25);
-            border-top-color: var(--cyan);
+            border-top-color:
+                #56bfff;
 
             border-radius: 50%;
 
-            animation: spin .7s linear infinite;
+            animation:
+                spin .7s linear infinite;
         }
 
         @keyframes spin {
+
             to {
                 transform: rotate(360deg);
             }
         }
 
-        /* =========================================
-           FOOTER
-        ========================================= */
 
-        .footer {
-            margin-top: 22px;
+        /* ==========================================
+           BOTÓN PRINCIPAL
+        ========================================== */
 
-            color: rgba(255,255,255,.32);
+        .main-btn {
 
-            font-size: 10px;
-        }
-
-        .footer a {
-            color: rgba(0,229,255,.65);
-
-            text-decoration: none;
-
-            font-weight: 700;
-        }
-
-        .footer p {
-            margin: 6px;
-        }
-
-        /* =========================================
-           ERROR
-        ========================================= */
-
-        #error-msg {
-            display: none;
-        }
-
-        .error-icon {
-            width: 75px;
-            height: 75px;
-
-            margin: 0 auto 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 24px;
-
-            background: rgba(255,49,88,.1);
-
-            border: 1px solid rgba(255,49,88,.25);
-
-            font-size: 30px;
-
-            box-shadow:
-                0 0 35px rgba(255,49,88,.12);
-        }
-
-        .continue {
             width: 100%;
 
-            margin-top: 22px;
+            min-height: 56px;
 
-            padding: 15px;
-
-            border: 0;
+            border: none;
 
             border-radius: 16px;
+
+            color: #fff;
 
             background:
                 linear-gradient(
                     135deg,
-                    #00c987,
-                    #00a974
+                    #2ea6ff,
+                    #1583d3
                 );
 
-            color: white;
+            font-size: 15px;
 
-            font-size: 14px;
-            font-weight: 800;
+            font-weight: 850;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 13px 30px rgba(46,166,255,.24);
+
+            transition:
+                transform .15s ease,
+                opacity .2s ease,
+                filter .2s ease;
+        }
+
+        .main-btn:active {
+
+            transform:
+                scale(.97);
+        }
+
+        .main-btn:hover {
+
+            filter:
+                brightness(1.08);
+        }
+
+        .main-btn:disabled {
+
+            opacity: .55;
+
+            cursor:
+                not-allowed;
+        }
+
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+
+        .footer {
+
+            margin-top: 13px;
+
+            text-align: center;
+
+            font-size: 9px;
+
+            color:
+                rgba(255,255,255,.27);
+        }
+
+
+        /* ==========================================
+           PANTALLAS SECUNDARIAS
+        ========================================== */
+
+        #errorCard,
+        #successCard {
+
+            display: none;
+        }
+
+        .special-icon {
+
+            width: 82px;
+            height: 82px;
+
+            margin: 2px auto 17px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 37px;
+        }
+
+        .error-icon {
+
+            background:
+                rgba(255,82,82,.09);
+
+            border:
+                1px solid rgba(255,82,82,.18);
+        }
+
+        .success-icon {
+
+            background:
+                rgba(49,209,88,.10);
+
+            border:
+                1px solid rgba(49,209,88,.20);
+
+            animation:
+                success .45s ease;
+        }
+
+        @keyframes success {
+
+            from {
+                transform: scale(.5);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.08);
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .special-title {
+
+            margin: 0 0 8px;
+
+            text-align: center;
+
+            font-size: 22px;
+
+            font-weight: 850;
+        }
+
+        .special-text {
+
+            max-width: 320px;
+
+            margin: 0 auto 20px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.62);
+
+            font-size: 13px;
+
+            line-height: 1.55;
+        }
+
+        .secondary {
+
+            width: 100%;
+
+            min-height: 50px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid rgba(255,255,255,.10);
+
+            background:
+                rgba(255,255,255,.05);
+
+            color:
+                rgba(255,255,255,.78);
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            cursor: pointer;
+        }
+
+        .secondary + .secondary {
+
+            margin-top: 9px;
+        }
+
+
+        /* ==========================================
+           PANTALLAS PEQUEÑAS
+        ========================================== */
+
+        @media (max-height: 650px) {
+
+            .card {
+                padding: 18px;
+            }
+
+            .header {
+                margin-bottom: 12px;
+            }
+
+            .hero {
+                width: 62px;
+                height: 62px;
+                border-radius: 19px;
+                font-size: 28px;
+                margin-bottom: 11px;
+            }
+
+            h1 {
+                font-size: 21px;
+            }
+
+            .description {
+                font-size: 12px;
+            }
+
+            .progress-header {
+                margin-top: 13px;
+            }
+
+            .main-btn {
+                min-height: 50px;
+            }
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <!-- BACKGROUND -->
+    <div class="orb one"></div>
+    <div class="orb two"></div>
 
-    <div class="background">
-
-        <div class="grid"></div>
-
-        <div class="particles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-    </div>
-
-
-    <!-- APP -->
 
     <main class="app">
 
-        <section class="panel">
 
-            <!-- LOGO -->
+        <!-- =================================================
+             PRINCIPAL
+        ================================================== -->
 
-            <div class="logo-area">
+        <section
+            class="card"
+            id="mainCard"
+        >
 
-                <div class="ring one"></div>
-                <div class="ring two"></div>
-                <div class="ring three"></div>
+            <div class="header">
 
-                <div class="logo">
-                    KT
+                <div class="brand">
+
+                    <span class="online"></span>
+
+                    DEPWISE
+
+                </div>
+
+                <div class="sponsor">
+                    SPONSOR
                 </div>
 
             </div>
 
 
-            <!-- LOADING / MAIN -->
-
-            <div id="loading">
-
-                <div class="mini-title">
-                    KevinTech System
-                </div>
-
-                <h1>
-                    <span>Acceso Premium</span>
-                </h1>
-
-                <p class="description">
-                    Estás a un paso de continuar.
-                    Mira un pequeño anuncio para mantener
-                    este servicio disponible gratuitamente.
-                </p>
+            <div class="hero">
+                📺
+            </div>
 
 
-                <div class="status">
-                    <span class="status-dot"></span>
-                    Sistema disponible
-                </div>
+            <h1>
+                Apoya a nuestros patrocinadores
+            </h1>
 
 
-                <div class="button-wrap">
+            <p class="description">
+                Mira los anuncios patrocinados para
+                continuar con tu cuenta gratuita.
+            </p>
 
-                    <div class="glow"></div>
 
-                    <button id="playBtn">
+            <div class="progress-header">
 
-                        <span
-                            id="loader"
-                            class="loader">
-                        </span>
+                <span>
+                    Progreso
+                </span>
 
-                        <span id="btnText">
-                            ▶ &nbsp; VER ANUNCIO
-                        </span>
-
-                    </button>
-
-                </div>
+                <strong id="counter">
+                    0 / 3
+                </strong>
 
             </div>
 
 
-            <!-- ERROR -->
+            <div class="progress">
 
-            <div id="error-msg">
+                <div
+                    class="segment"
+                    id="seg1"
+                ></div>
 
-                <div class="error-icon">
-                    ⚠️
-                </div>
+                <div
+                    class="segment"
+                    id="seg2"
+                ></div>
 
-                <div class="mini-title">
-                    KevinTech System
-                </div>
-
-                <h1>
-                    Anuncio no disponible
-                </h1>
-
-                <p class="description">
-                    En este momento no hay publicidad disponible
-                    para tu región.
-                </p>
-
-                <button
-                    class="continue"
-                    onclick="sendSuccessAndClose()">
-
-                    ✓ CONTINUAR
-
-                </button>
+                <div
+                    class="segment"
+                    id="seg3"
+                ></div>
 
             </div>
 
 
-            <!-- FOOTER -->
+            <div
+                class="status"
+                id="status"
+                aria-live="polite"
+            >
+                Listo para comenzar
+            </div>
+
+
+            <button
+                class="main-btn"
+                id="playBtn"
+                type="button"
+            >
+                ▶️ Ver anuncio
+            </button>
+
 
             <div class="footer">
+                Publicidad patrocinada por Adsgram
+            </div>
 
-                <p>
-                    © KevinTech Multi Script
-                </p>
+        </section>
 
-                <p>
-                    <a
-                        href="https://youtube.com/@kevintechtutorials?si=a2gv6Oqhsne9Thgl"
-                        target="_blank">
-                        YouTube
-                    </a>
 
-                    &nbsp;•&nbsp;
 
-                    <a
-                        href="https://whatsapp.com/channel/0029VaGmNBB4Y9lvO2Ppem2l"
-                        target="_blank">
-                        WhatsApp
-                    </a>
-                </p>
+        <!-- =================================================
+             ERROR
+        ================================================== -->
 
+        <section
+            class="card"
+            id="errorCard"
+        >
+
+            <div class="special-icon error-icon">
+                ⚠️
+            </div>
+
+
+            <h2 class="special-title">
+                Anuncio no disponible
+            </h2>
+
+
+            <p
+                class="special-text"
+                id="errorText"
+            >
+                No pudimos cargar el anuncio.
+            </p>
+
+
+            <button
+                class="main-btn"
+                id="retryBtn"
+                type="button"
+            >
+                🔄 Intentar nuevamente
+            </button>
+
+
+            <button
+                class="secondary"
+                id="errorContinueBtn"
+                type="button"
+            >
+                Volver a Telegram
+            </button>
+
+
+            <div class="footer">
+                Puede que no haya anuncios disponibles
+                en este momento.
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ÉXITO
+        ================================================== -->
+
+        <section
+            class="card"
+            id="successCard"
+        >
+
+            <div class="special-icon success-icon">
+                ✓
+            </div>
+
+
+            <h2 class="special-title">
+                ¡Todo listo!
+            </h2>
+
+
+            <p class="special-text">
+                Has completado correctamente
+                los anuncios patrocinados.
+            </p>
+
+
+            <button
+                class="main-btn"
+                id="finishBtn"
+                type="button"
+            >
+                🚀 Continuar en Telegram
+            </button>
+
+
+            <div class="footer">
+                Verificación completada
             </div>
 
         </section>
@@ -779,147 +943,668 @@
     </main>
 
 
-<script>
 
-    /* =========================================
-       TELEGRAM
-    ========================================= */
+    <script>
 
-    const tg = window.Telegram.WebApp;
+        /* =====================================================
+           TELEGRAM
+        ===================================================== */
 
-    tg.ready();
-    tg.expand();
-
-
-    /* =========================================
-       ELEMENTS
-    ========================================= */
-
-    const playBtn =
-        document.getElementById("playBtn");
-
-    const btnText =
-        document.getElementById("btnText");
-
-    const loader =
-        document.getElementById("loader");
-
-    const loading =
-        document.getElementById("loading");
-
-    const errorMsg =
-        document.getElementById("error-msg");
+        const tg =
+            window.Telegram?.WebApp || null;
 
 
-    /* =========================================
-       SUCCESS
-    ========================================= */
+        if (tg) {
 
-    const params = new URLSearchParams(window.location.search);
-    const hashParams = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
-    const adToken = params.get('token') || hashParams.get('token') || '';
+            tg.ready();
 
-    function sendSuccessAndClose() {
+            tg.expand();
 
-        if (!adToken) {
-            showError();
-            return;
         }
 
-        const url =
-            "https://t.me/betapenubot?start=adcompleted_" + encodeURIComponent(adToken);
+
+
+        /* =====================================================
+           CONFIGURACIÓN
+        ===================================================== */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        /*
+         * Puedes utilizar:
+         *
+         * https://tuweb.com/?blockId=36350
+         *
+         * Si no mandas blockId,
+         * utilizará 36350.
+         */
+
+        const blockId =
+            params.get("blockId") ||
+            "36350";
+
+
+        /*
+         * Cantidad de anuncios.
+         */
+
+        const TOTAL_ADS = 3;
+
+
+
+        /* =====================================================
+           ELEMENTOS
+        ===================================================== */
+
+        const mainCard =
+            document.getElementById(
+                "mainCard"
+            );
+
+        const errorCard =
+            document.getElementById(
+                "errorCard"
+            );
+
+        const successCard =
+            document.getElementById(
+                "successCard"
+            );
+
+        const playBtn =
+            document.getElementById(
+                "playBtn"
+            );
+
+        const retryBtn =
+            document.getElementById(
+                "retryBtn"
+            );
+
+        const errorContinueBtn =
+            document.getElementById(
+                "errorContinueBtn"
+            );
+
+        const finishBtn =
+            document.getElementById(
+                "finishBtn"
+            );
+
+        const status =
+            document.getElementById(
+                "status"
+            );
+
+        const counter =
+            document.getElementById(
+                "counter"
+            );
+
+        const errorText =
+            document.getElementById(
+                "errorText"
+            );
+
+
+        const segments = [
+
+            document.getElementById(
+                "seg1"
+            ),
+
+            document.getElementById(
+                "seg2"
+            ),
+
+            document.getElementById(
+                "seg3"
+            )
+
+        ];
+
+
+
+        /* =====================================================
+           ADSGRAM
+        ===================================================== */
+
+        let AdController = null;
+
 
         try {
 
-            tg.openTelegramLink(url);
+            if (
+                !window.Adsgram ||
+                typeof window.Adsgram.init !==
+                "function"
+            ) {
 
-            setTimeout(() => {
-                tg.close();
-            }, 400);
+                throw new Error(
+                    "Adsgram SDK no disponible"
+                );
 
-        } catch (e) {
+            }
 
-            window.location.href = url;
+
+            /*
+             * Inicializamos una sola vez.
+             */
+
+            AdController =
+                window.Adsgram.init({
+                    blockId: blockId
+                });
+
+
+        } catch (error) {
+
+            console.error(
+                "Adsgram Init:",
+                error
+            );
+
+
+            showError(
+                "No se pudo iniciar el sistema de publicidad."
+            );
 
         }
-    }
 
 
-    /* =========================================
-       ERROR
-    ========================================= */
 
-    function showError() {
+        /* =====================================================
+           ESTADO
+        ===================================================== */
 
-        loading.style.display = "none";
+        let currentAd = 0;
 
-        errorMsg.style.display = "block";
-
-    }
+        let running = false;
 
 
-    /* =========================================
-       AD
-    ========================================= */
 
-    playBtn.addEventListener(
-        "click",
-        async () => {
+        /* =====================================================
+           PROGRESO
+        ===================================================== */
+
+        function updateProgress() {
+
+            counter.textContent =
+                `${currentAd} / ${TOTAL_ADS}`;
+
+
+            segments.forEach(
+                (segment, index) => {
+
+                    segment.classList.remove(
+                        "active",
+                        "done"
+                    );
+
+
+                    if (
+                        index < currentAd
+                    ) {
+
+                        segment.classList.add(
+                            "done"
+                        );
+
+                    }
+
+
+                    if (
+                        index === currentAd &&
+                        currentAd < TOTAL_ADS
+                    ) {
+
+                        segment.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        function setLoading(text) {
+
+            status.innerHTML = `
+                <span class="spinner"></span>
+                ${text}
+            `;
+
+        }
+
+
+
+        /* =====================================================
+           INICIAR
+        ===================================================== */
+
+        playBtn.addEventListener(
+            "click",
+            startAds
+        );
+
+
+        async function startAds() {
+
+            if (running) {
+                return;
+            }
+
+
+            if (!AdController) {
+
+                showError(
+                    "Adsgram no está disponible."
+                );
+
+                return;
+
+            }
+
+
+            running = true;
 
             playBtn.disabled = true;
 
-            loader.style.display =
-                "inline-block";
 
-            btnText.textContent =
-                "CARGANDO ANUNCIO...";
+            /*
+             * Si anteriormente falló,
+             * continuamos desde currentAd.
+             */
+
+            while (
+                currentAd < TOTAL_ADS
+            ) {
+
+                updateProgress();
 
 
-            const sdkTag = document.querySelector('script[src*="libtl.com/sdk.js"]');
-            const sdkName = sdkTag ? (sdkTag.getAttribute('data-sdk') || '') : '';
-            const showAd = sdkName && typeof window[sdkName] === 'function'
-                ? window[sdkName]
-                : null;
+                const number =
+                    currentAd + 1;
 
-            if (!showAd) {
 
-                showError();
+                setLoading(
+                    `Preparando anuncio ${number} de ${TOTAL_ADS}...`
+                );
+
+
+                try {
+
+                    /*
+                     * Mostrar anuncio.
+                     */
+
+                    await AdController.show();
+
+
+                    /*
+                     * El anuncio terminó.
+                     */
+
+                    segments[currentAd]
+                        .classList.remove(
+                            "active"
+                        );
+
+                    segments[currentAd]
+                        .classList.add(
+                            "done"
+                        );
+
+
+                    currentAd++;
+
+
+                    counter.textContent =
+                        `${currentAd} / ${TOTAL_ADS}`;
+
+
+                    status.innerHTML =
+                        `✓ Anuncio ${number} completado`;
+
+
+                    /*
+                     * Pausa entre anuncios.
+                     */
+
+                    if (
+                        currentAd < TOTAL_ADS
+                    ) {
+
+                        await wait(700);
+
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        `Adsgram error ${number}:`,
+                        error
+                    );
+
+
+                    running = false;
+
+                    playBtn.disabled = false;
+
+                    playBtn.textContent =
+                        "🔄 Intentar nuevamente";
+
+
+                    showError(
+                        `No se pudo completar el anuncio ${number}. Puede que no haya publicidad disponible en este momento.`
+                    );
+
+
+                    return;
+
+                }
+
+            }
+
+
+            /*
+             * =========================================
+             * 3/3 COMPLETADOS
+             * =========================================
+             */
+
+            running = false;
+
+            updateProgress();
+
+            showSuccess();
+
+        }
+
+
+
+        /* =====================================================
+           ÉXITO
+        ===================================================== */
+
+        function showSuccess() {
+
+            mainCard.style.display =
+                "none";
+
+            errorCard.style.display =
+                "none";
+
+            successCard.style.display =
+                "block";
+
+        }
+
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        function showError(message) {
+
+            mainCard.style.display =
+                "none";
+
+            successCard.style.display =
+                "none";
+
+            errorCard.style.display =
+                "block";
+
+
+            errorText.textContent =
+                message;
+
+        }
+
+
+
+        /* =====================================================
+           REINTENTAR
+        ===================================================== */
+
+        retryBtn.addEventListener(
+            "click",
+            () => {
+
+                errorCard.style.display =
+                    "none";
+
+                mainCard.style.display =
+                    "block";
+
+
+                running = false;
+
+                playBtn.disabled = false;
+
+                playBtn.textContent =
+                    "▶️ Ver anuncio";
+
+
+                updateProgress();
+
+
+                status.textContent =
+                    currentAd < TOTAL_ADS
+                        ? `Pendiente: anuncio ${currentAd + 1} de ${TOTAL_ADS}`
+                        : "Proceso completado";
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ESPERA
+        ===================================================== */
+
+        function wait(ms) {
+
+            return new Promise(
+                resolve =>
+                    setTimeout(
+                        resolve,
+                        ms
+                    )
+            );
+
+        }
+
+
+
+        /* =====================================================
+           ABRIR TELEGRAM
+        ===================================================== */
+
+        function openTelegram(url) {
+
+            if (!tg) {
+
+                window.location.href =
+                    url;
 
                 return;
+
             }
 
 
             try {
 
-                await showAd();
+                tg.openTelegramLink(
+                    url
+                );
+
+            } catch (error) {
+
+                window.location.href =
+                    url;
+
+            }
 
 
-                loader.style.display =
-                    "none";
+            setTimeout(
+                () => {
 
-                btnText.textContent =
-                    "✓ COMPLETADO";
+                    try {
+
+                        tg.close();
+
+                    } catch (e) {}
+
+                },
+                500
+            );
+
+        }
 
 
-                setTimeout(
-                    sendSuccessAndClose,
-                    600
+
+        /* =====================================================
+           COMPLETADO
+        ===================================================== */
+
+        finishBtn.addEventListener(
+            "click",
+            () => {
+
+                openTelegram(
+                    "https://t.me/Depwise_bot?start=adcompleted"
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        errorContinueBtn.addEventListener(
+            "click",
+            () => {
+
+                openTelegram(
+                    "https://t.me/Depwise_bot?start=aderror"
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           EVENTOS ADSGRAM
+        ===================================================== */
+
+        if (AdController) {
+
+            try {
+
+                AdController.addEventListener(
+                    "onStart",
+                    () => {
+
+                        console.log(
+                            "Adsgram → START"
+                        );
+
+                    }
+                );
+
+
+                AdController.addEventListener(
+                    "onComplete",
+                    () => {
+
+                        console.log(
+                            "Adsgram → COMPLETE"
+                        );
+
+                    }
+                );
+
+
+                AdController.addEventListener(
+                    "onReward",
+                    () => {
+
+                        console.log(
+                            "Adsgram → REWARD"
+                        );
+
+                    }
+                );
+
+
+                AdController.addEventListener(
+                    "onSkip",
+                    () => {
+
+                        console.log(
+                            "Adsgram → SKIP"
+                        );
+
+                    }
+                );
+
+
+                AdController.addEventListener(
+                    "onError",
+                    error => {
+
+                        console.log(
+                            "Adsgram → ERROR",
+                            error
+                        );
+
+                    }
+                );
+
+
+                AdController.addEventListener(
+                    "onBannerNotFound",
+                    () => {
+
+                        console.log(
+                            "Adsgram → NO AD"
+                        );
+
+                    }
                 );
 
 
             } catch (error) {
 
-                loader.style.display =
-                    "none";
-
-                showError();
+                console.log(
+                    "Eventos Adsgram no disponibles"
+                );
 
             }
 
         }
-    );
 
-</script>
+    </script>
 
 </body>
 </html>
